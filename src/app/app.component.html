@@ -1,0 +1,54 @@
+<mat-toolbar class="header">
+  <button mat-icon-button class="nav-icon">
+    <mat-icon>menu</mat-icon>
+  </button>
+  <p class="title">3 Square Interior & Exterior</p>
+  <button mat-icon-button class="versionInfo" [matMenuTriggerFor]="menu">
+    <mat-icon>info</mat-icon>
+  </button>
+</mat-toolbar>
+<main>
+  <mat-drawer-container class="main-container">
+    <mat-drawer mode="side" opened>
+      <div class="left-container">
+        <mat-list>
+          @for (nav of navs; track nav) {
+          <mat-list-item [routerLink]="[nav.routerLink]" routerLinkActive="active">
+            <mat-icon matListItemIcon>{{nav.iconName}}</mat-icon>
+            <div matListItemTitle>{{nav.name | titlecase}}</div>
+          </mat-list-item>
+          }
+        </mat-list>
+      </div>
+    </mat-drawer>
+    <mat-drawer-content>
+      <div class="right-container"><router-outlet /></div>
+    </mat-drawer-content>
+  </mat-drawer-container>
+</main>
+<mat-toolbar class="footer">
+  <mat-toolbar-row>
+    <div class="secondSection">
+      <div class="copyWriteSection">
+        <p>&copy; 2024. All Rights Reserved. </p>
+        <p>Designed by Magizh Info Tech with ♥</p>
+      </div>
+      <div class="socialIcons">
+        <button mat-icon-button class="fb-icon">
+          <i class="fa fa-brands fa-facebook"></i>
+        </button>
+        <button mat-icon-button class="insta-icon">
+          <i class="fa fa-brands fa-instagram"></i>
+        </button>
+        <button mat-icon-button class="whatsapp-icon">
+          <i class="fa fa-brands fa-whatsapp"></i>
+        </button>
+      </div>
+    </div>
+  </mat-toolbar-row>
+</mat-toolbar>
+
+
+<mat-menu #menu="matMenu">
+  <button mat-menu-item>Version 1.0</button>
+</mat-menu>
